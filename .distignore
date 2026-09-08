@@ -4,6 +4,8 @@
 /.wordpress-org
 /bin
 /dist
+/docs
+/submission
 /test-builds
 /css
 /images

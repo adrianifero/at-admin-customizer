@@ -8,16 +8,18 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Brand your WordPress admin with your own colors, and curate dashboard widgets — lightweight, no white-label bloat.
+Brand your WordPress admin with your own colors, and curate dashboard widgets. Lightweight, no white-label bloat.
 
 == Description ==
 
+https://www.youtube.com/watch?v=7mr7VNq7BGo
+
 AT Admin Customizer helps you make the WordPress admin feel like *your* workspace.
 
-* **Admin colors** — open a floating color customizer on any admin screen. Pick a starter palette or choose your own colors. Preview live, then save.
-* **Dashboard widgets** — add up to two custom dashboard boxes, choose which roles see them, and optionally hide the default WordPress widgets.
+* **Admin colors** - open a floating color customizer on any admin screen. Pick a starter palette or choose your own colors. Preview live, then save.
+* **Dashboard widgets** - add up to two custom dashboard boxes, choose which roles see them, and optionally hide the default WordPress widgets.
 
-No business-specific branding ships with the plugin. You create the palette that fits your site.
+On install, the admin looks like normal WordPress until you choose a palette.
 
 == Installation ==
 
@@ -33,7 +35,7 @@ No. Colors apply to the WordPress admin. Your front-end theme is unchanged.
 
 = Are there default brand colors? =
 
-On install, the admin looks like normal WordPress. Starter palettes (Slate, Ocean, Forest, Warm) are optional starting points — not tied to any company.
+On install, the admin looks like normal WordPress. Starter palettes (Slate, Ocean, Forest, Warm) are optional starting points you can customize further.
 
 = Who can change colors? =
 

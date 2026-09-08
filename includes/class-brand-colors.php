@@ -28,7 +28,7 @@ final class CAD_Brand_Colors {
 	}
 
 	/**
-	 * Default palette — WordPress admin defaults (no rebrand until the user chooses).
+	 * Default palette: WordPress admin defaults (no rebrand until the user chooses).
 	 *
 	 * @return array<string,string>
 	 */
@@ -205,7 +205,7 @@ final class CAD_Brand_Colors {
 				'labels'   => self::field_labels(),
 				'i18n'     => array(
 					'title'           => __( 'Admin colors', 'at-admin-customizer' ),
-					'subtitle'        => __( 'Choose a starter palette or pick your own. Changes preview live — save when you like them.', 'at-admin-customizer' ),
+					'subtitle'        => __( 'Choose a starter palette or pick your own. Changes preview live. Save when you like them.', 'at-admin-customizer' ),
 					'starters'        => __( 'Starters', 'at-admin-customizer' ),
 					'yourColors'      => __( 'Your colors', 'at-admin-customizer' ),
 					'save'            => __( 'Save palette', 'at-admin-customizer' ),

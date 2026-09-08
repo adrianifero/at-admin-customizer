@@ -2,7 +2,7 @@
 /**
  * Plugin Name: AT Admin Customizer
  * Plugin URI:  https://wordpress.org/plugins/at-admin-customizer/
- * Description: Brand your WordPress admin with your own colors, and curate dashboard widgets — lightweight, no white-label bloat.
+ * Description: Brand your WordPress admin with your own colors, and curate dashboard widgets. Lightweight, no white-label bloat.
  * Version:     1.1.0
  * Author:      Adrian Toro
  * Author URI:  https://adriantoro.com
