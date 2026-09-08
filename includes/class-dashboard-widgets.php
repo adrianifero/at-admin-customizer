@@ -2,7 +2,7 @@
 /**
  * Custom dashboard widgets (legacy feature, cleaned up).
  *
- * @package Customize_Admin_Dashboard
+ * @package AT_Admin_Customizer
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -131,7 +131,7 @@ final class CAD_Dashboard_Widgets {
 		add_settings_error(
 			'cad_dashboard_widgets',
 			'cad_saved',
-			__( 'Dashboard widget settings saved.', 'customize-admin-dashboard' ),
+			__( 'Dashboard widget settings saved.', 'at-admin-customizer' ),
 			'success'
 		);
 	}
@@ -151,7 +151,7 @@ final class CAD_Dashboard_Widgets {
 			<p>
 				<label>
 					<input type="checkbox" name="cad_remove_defaults" value="1" <?php checked( ! empty( $settings['remove_defaults'] ) ); ?> />
-					<?php echo esc_html__( 'Hide default WordPress dashboard widgets', 'customize-admin-dashboard' ); ?>
+					<?php echo esc_html__( 'Hide default WordPress dashboard widgets', 'at-admin-customizer' ); ?>
 				</label>
 			</p>
 
@@ -162,7 +162,7 @@ final class CAD_Dashboard_Widgets {
 						echo esc_html(
 							sprintf(
 								/* translators: %d: box number */
-								__( 'Custom box %d', 'customize-admin-dashboard' ),
+								__( 'Custom box %d', 'at-admin-customizer' ),
 								$index + 1
 							)
 						);
@@ -170,12 +170,12 @@ final class CAD_Dashboard_Widgets {
 					</legend>
 					<p>
 						<label>
-							<?php echo esc_html__( 'Title', 'customize-admin-dashboard' ); ?><br />
+							<?php echo esc_html__( 'Title', 'at-admin-customizer' ); ?><br />
 							<input type="text" class="regular-text" name="<?php echo esc_attr( 'cad_box_' . $index . '_title' ); ?>" value="<?php echo esc_attr( $box['title'] ); ?>" />
 						</label>
 					</p>
 					<p>
-						<label><?php echo esc_html__( 'Content', 'customize-admin-dashboard' ); ?></label>
+						<label><?php echo esc_html__( 'Content', 'at-admin-customizer' ); ?></label>
 					</p>
 					<?php
 					wp_editor(
@@ -188,7 +188,7 @@ final class CAD_Dashboard_Widgets {
 						)
 					);
 					?>
-					<p><?php echo esc_html__( 'Visible to roles:', 'customize-admin-dashboard' ); ?></p>
+					<p><?php echo esc_html__( 'Visible to roles:', 'at-admin-customizer' ); ?></p>
 					<ul class="cad-role-list">
 						<?php foreach ( $roles as $role_key => $role ) : ?>
 							<li>
@@ -207,7 +207,7 @@ final class CAD_Dashboard_Widgets {
 				</fieldset>
 			<?php endforeach; ?>
 
-			<?php submit_button( __( 'Save widget settings', 'customize-admin-dashboard' ) ); ?>
+			<?php submit_button( __( 'Save widget settings', 'at-admin-customizer' ) ); ?>
 		</form>
 		<?php
 	}
@@ -232,7 +232,7 @@ final class CAD_Dashboard_Widgets {
 			$id = 'cad_custom_box_' . $index;
 			wp_add_dashboard_widget(
 				$id,
-				$box['title'] ? $box['title'] : __( 'Custom box', 'customize-admin-dashboard' ),
+				$box['title'] ? $box['title'] : __( 'Custom box', 'at-admin-customizer' ),
 				function () use ( $box ) {
 					echo wp_kses_post( apply_filters( 'the_content', $box['content'] ) );
 				},

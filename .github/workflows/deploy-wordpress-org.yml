@@ -1,7 +1,7 @@
 name: Deploy to WordPress.org
 
 # Tag name must be the plugin version: 1.1.0 not v1.1.0.
-# Directory slug matches GitHub repo: customize-admin-dashboard.
+# Directory slug: at-admin-customizer.
 on:
   push:
     tags:
@@ -19,4 +19,4 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: customize-admin-dashboard
+          SLUG: at-admin-customizer

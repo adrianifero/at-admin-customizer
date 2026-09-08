@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Customize Admin Dashboard
- * Plugin URI:  https://wordpress.org/plugins/customize-admin-dashboard/
+ * Plugin Name: AT Admin Customizer
+ * Plugin URI:  https://wordpress.org/plugins/at-admin-customizer/
  * Description: Brand your WordPress admin with your own colors, and curate dashboard widgets — lightweight, no white-label bloat.
  * Version:     1.1.0
  * Author:      Adrian Toro
  * Author URI:  https://adriantoro.com
- * Text Domain: customize-admin-dashboard
+ * Text Domain: at-admin-customizer
  * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP: 7.4

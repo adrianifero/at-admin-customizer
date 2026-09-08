@@ -2,7 +2,7 @@
 /**
  * Admin brand colors: live panel + CSS custom properties.
  *
- * @package Customize_Admin_Dashboard
+ * @package AT_Admin_Customizer
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -51,11 +51,11 @@ final class CAD_Brand_Colors {
 	public static function presets() {
 		return array(
 			'default' => array(
-				'label'  => __( 'WordPress default', 'customize-admin-dashboard' ),
+				'label'  => __( 'WordPress default', 'at-admin-customizer' ),
 				'colors' => self::defaults(),
 			),
 			'slate'   => array(
-				'label'  => __( 'Slate', 'customize-admin-dashboard' ),
+				'label'  => __( 'Slate', 'at-admin-customizer' ),
 				'colors' => array(
 					'menu_bg'        => '#2c3338',
 					'menu_text'      => '#f0f0f1',
@@ -66,7 +66,7 @@ final class CAD_Brand_Colors {
 				),
 			),
 			'ocean'   => array(
-				'label'  => __( 'Ocean', 'customize-admin-dashboard' ),
+				'label'  => __( 'Ocean', 'at-admin-customizer' ),
 				'colors' => array(
 					'menu_bg'        => '#0b3d4a',
 					'menu_text'      => '#e8f4f7',
@@ -77,7 +77,7 @@ final class CAD_Brand_Colors {
 				),
 			),
 			'forest'  => array(
-				'label'  => __( 'Forest', 'customize-admin-dashboard' ),
+				'label'  => __( 'Forest', 'at-admin-customizer' ),
 				'colors' => array(
 					'menu_bg'        => '#1e3323',
 					'menu_text'      => '#eef5ef',
@@ -88,7 +88,7 @@ final class CAD_Brand_Colors {
 				),
 			),
 			'warm'    => array(
-				'label'  => __( 'Warm', 'customize-admin-dashboard' ),
+				'label'  => __( 'Warm', 'at-admin-customizer' ),
 				'colors' => array(
 					'menu_bg'        => '#3a2a22',
 					'menu_text'      => '#faf3ee',
@@ -108,12 +108,12 @@ final class CAD_Brand_Colors {
 	 */
 	public static function field_labels() {
 		return array(
-			'menu_bg'        => __( 'Menu background', 'customize-admin-dashboard' ),
-			'menu_text'      => __( 'Menu text', 'customize-admin-dashboard' ),
-			'menu_highlight' => __( 'Menu highlight', 'customize-admin-dashboard' ),
-			'admin_bar'      => __( 'Admin bar', 'customize-admin-dashboard' ),
-			'primary_button' => __( 'Primary button', 'customize-admin-dashboard' ),
-			'link'           => __( 'Links', 'customize-admin-dashboard' ),
+			'menu_bg'        => __( 'Menu background', 'at-admin-customizer' ),
+			'menu_text'      => __( 'Menu text', 'at-admin-customizer' ),
+			'menu_highlight' => __( 'Menu highlight', 'at-admin-customizer' ),
+			'admin_bar'      => __( 'Admin bar', 'at-admin-customizer' ),
+			'primary_button' => __( 'Primary button', 'at-admin-customizer' ),
+			'link'           => __( 'Links', 'at-admin-customizer' ),
 		);
 	}
 
@@ -204,18 +204,18 @@ final class CAD_Brand_Colors {
 				'presets'  => self::presets(),
 				'labels'   => self::field_labels(),
 				'i18n'     => array(
-					'title'           => __( 'Admin colors', 'customize-admin-dashboard' ),
-					'subtitle'        => __( 'Choose a starter palette or pick your own. Changes preview live — save when you like them.', 'customize-admin-dashboard' ),
-					'starters'        => __( 'Starters', 'customize-admin-dashboard' ),
-					'yourColors'      => __( 'Your colors', 'customize-admin-dashboard' ),
-					'save'            => __( 'Save palette', 'customize-admin-dashboard' ),
-					'reset'           => __( 'Reset to default', 'customize-admin-dashboard' ),
-					'close'           => __( 'Close', 'customize-admin-dashboard' ),
-					'saved'           => __( 'Palette saved.', 'customize-admin-dashboard' ),
-					'resetDone'       => __( 'Reset to WordPress default.', 'customize-admin-dashboard' ),
-					'error'           => __( 'Could not save. Try again.', 'customize-admin-dashboard' ),
-					'openAria'        => __( 'Open admin color customizer', 'customize-admin-dashboard' ),
-					'saving'          => __( 'Saving…', 'customize-admin-dashboard' ),
+					'title'           => __( 'Admin colors', 'at-admin-customizer' ),
+					'subtitle'        => __( 'Choose a starter palette or pick your own. Changes preview live — save when you like them.', 'at-admin-customizer' ),
+					'starters'        => __( 'Starters', 'at-admin-customizer' ),
+					'yourColors'      => __( 'Your colors', 'at-admin-customizer' ),
+					'save'            => __( 'Save palette', 'at-admin-customizer' ),
+					'reset'           => __( 'Reset to default', 'at-admin-customizer' ),
+					'close'           => __( 'Close', 'at-admin-customizer' ),
+					'saved'           => __( 'Palette saved.', 'at-admin-customizer' ),
+					'resetDone'       => __( 'Reset to WordPress default.', 'at-admin-customizer' ),
+					'error'           => __( 'Could not save. Try again.', 'at-admin-customizer' ),
+					'openAria'        => __( 'Open admin color customizer', 'at-admin-customizer' ),
+					'saving'          => __( 'Saving…', 'at-admin-customizer' ),
 				),
 			)
 		);
