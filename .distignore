@@ -1,6 +1,7 @@
 # Directories
 /.git
 /.github
+/.wordpress-org
 /bin
 /dist
 /test-builds
