@@ -1,0 +1,15 @@
+# Directories
+/.git
+/.github
+/bin
+/dist
+/test-builds
+/css
+/images
+
+# Files
+.distignore
+.gitignore
+.gitattributes
+.DS_Store
+README.md
