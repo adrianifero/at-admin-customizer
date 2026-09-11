@@ -29,7 +29,7 @@ cp assets/js/*.js "${STAGE}/${SLUG}/assets/js/"
 cp "$OUT" "$SUBMISSION"
 rm -rf "$STAGE"
 
-if ! unzip -p "$OUT" "${SLUG}/assets/js/color-panel.js" | grep -q 'cadColorPanel'; then
+if ! unzip -p "$OUT" "${SLUG}/assets/js/color-panel.js" | grep -q 'atacColorPanel'; then
 	echo "ERROR: zip JS missing color panel" >&2
 	exit 1
 fi

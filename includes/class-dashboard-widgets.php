@@ -56,6 +56,14 @@ final class ATAC_Dashboard_Widgets {
 	 */
 	public function get_settings() {
 		$saved = get_option( self::OPTION_KEY, null );
+		if ( ! is_array( $saved ) ) {
+			$legacy = get_option( 'cad_dashboard_widgets', null );
+			if ( is_array( $legacy ) ) {
+				update_option( self::OPTION_KEY, $legacy, false );
+				delete_option( 'cad_dashboard_widgets' );
+				$saved = $legacy;
+			}
+		}
 		if ( is_array( $saved ) ) {
 			return wp_parse_args( $saved, self::defaults() );
 		}
