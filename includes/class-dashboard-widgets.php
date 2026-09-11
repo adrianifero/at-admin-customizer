@@ -2,7 +2,7 @@
 /**
  * Custom dashboard widgets (legacy feature, cleaned up).
  *
- * @package AT_Admin_Customizer
+ * @package AT_Admin_Palette
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -139,7 +139,7 @@ final class ATAC_Dashboard_Widgets {
 		add_settings_error(
 			'atac_dashboard_widgets',
 			'atac_saved',
-			__( 'Dashboard widget settings saved.', 'at-admin-customizer' ),
+			__( 'Dashboard widget settings saved.', 'at-admin-palette' ),
 			'success'
 		);
 	}
@@ -159,7 +159,7 @@ final class ATAC_Dashboard_Widgets {
 			<p>
 				<label>
 					<input type="checkbox" name="atac_remove_defaults" value="1" <?php checked( ! empty( $settings['remove_defaults'] ) ); ?> />
-					<?php echo esc_html__( 'Hide default WordPress dashboard widgets', 'at-admin-customizer' ); ?>
+					<?php echo esc_html__( 'Hide default WordPress dashboard widgets', 'at-admin-palette' ); ?>
 				</label>
 			</p>
 
@@ -170,7 +170,7 @@ final class ATAC_Dashboard_Widgets {
 						echo esc_html(
 							sprintf(
 								/* translators: %d: box number */
-								__( 'Custom box %d', 'at-admin-customizer' ),
+								__( 'Custom box %d', 'at-admin-palette' ),
 								$index + 1
 							)
 						);
@@ -178,12 +178,12 @@ final class ATAC_Dashboard_Widgets {
 					</legend>
 					<p>
 						<label>
-							<?php echo esc_html__( 'Title', 'at-admin-customizer' ); ?><br />
+							<?php echo esc_html__( 'Title', 'at-admin-palette' ); ?><br />
 							<input type="text" class="regular-text" name="<?php echo esc_attr( 'atac_box_' . $index . '_title' ); ?>" value="<?php echo esc_attr( $box['title'] ); ?>" />
 						</label>
 					</p>
 					<p>
-						<label><?php echo esc_html__( 'Content', 'at-admin-customizer' ); ?></label>
+						<label><?php echo esc_html__( 'Content', 'at-admin-palette' ); ?></label>
 					</p>
 					<?php
 					wp_editor(
@@ -196,7 +196,7 @@ final class ATAC_Dashboard_Widgets {
 						)
 					);
 					?>
-					<p><?php echo esc_html__( 'Visible to roles:', 'at-admin-customizer' ); ?></p>
+					<p><?php echo esc_html__( 'Visible to roles:', 'at-admin-palette' ); ?></p>
 					<ul class="atac-role-list">
 						<?php foreach ( $roles as $role_key => $role ) : ?>
 							<li>
@@ -215,7 +215,7 @@ final class ATAC_Dashboard_Widgets {
 				</fieldset>
 			<?php endforeach; ?>
 
-			<?php submit_button( __( 'Save widget settings', 'at-admin-customizer' ) ); ?>
+			<?php submit_button( __( 'Save widget settings', 'at-admin-palette' ) ); ?>
 		</form>
 		<?php
 	}
@@ -240,7 +240,7 @@ final class ATAC_Dashboard_Widgets {
 			$id = 'atac_custom_box_' . $index;
 			wp_add_dashboard_widget(
 				$id,
-				$box['title'] ? $box['title'] : __( 'Custom box', 'at-admin-customizer' ),
+				$box['title'] ? $box['title'] : __( 'Custom box', 'at-admin-palette' ),
 				function () use ( $box ) {
 					echo wp_kses_post( apply_filters( 'the_content', $box['content'] ) );
 				},

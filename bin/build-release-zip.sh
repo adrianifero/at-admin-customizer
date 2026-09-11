@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Build a WordPress.org-compatible zip: top-level folder must be at-admin-customizer.
+# Build a WordPress.org-compatible zip: top-level folder must be at-admin-palette.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-VERSION="$(grep -E '^\s*\* Version:' at-admin-customizer.php | head -1 | awk '{print $3}')"
-SLUG="at-admin-customizer"
+VERSION="$(grep -E '^\s*\* Version:' at-admin-palette.php | head -1 | awk '{print $3}')"
+SLUG="at-admin-palette"
 STAGE="$(mktemp -d)"
 OUT="${ROOT}/dist/${SLUG}-${VERSION}.zip"
 SUBMISSION="${ROOT}/submission/${SLUG}-${VERSION}.zip"
@@ -16,7 +16,7 @@ mkdir -p "${ROOT}/dist" "${ROOT}/submission" \
   "${STAGE}/${SLUG}/assets/css" \
   "${STAGE}/${SLUG}/assets/js"
 
-cp at-admin-customizer.php readme.txt "${STAGE}/${SLUG}/"
+cp at-admin-palette.php readme.txt "${STAGE}/${SLUG}/"
 cp includes/*.php "${STAGE}/${SLUG}/includes/"
 cp assets/css/*.css "${STAGE}/${SLUG}/assets/css/"
 cp assets/js/*.js "${STAGE}/${SLUG}/assets/js/"
@@ -39,8 +39,8 @@ if ! unzip -p "$OUT" "${SLUG}/includes/class-brand-colors.php" | grep -q 'atac_b
 	exit 1
 fi
 
-if ! unzip -p "$OUT" "${SLUG}/at-admin-customizer.php" | grep -q 'Plugin Name: AT Admin Customizer'; then
-	echo "ERROR: zip main file missing AT Admin Customizer header" >&2
+if ! unzip -p "$OUT" "${SLUG}/at-admin-palette.php" | grep -q 'Plugin Name: AT Admin Palette'; then
+	echo "ERROR: zip main file missing AT Admin Palette header" >&2
 	exit 1
 fi
 

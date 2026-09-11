@@ -2,7 +2,7 @@
 /**
  * Plugin bootstrap and settings screen.
  *
- * @package AT_Admin_Customizer
+ * @package AT_Admin_Palette
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,14 +40,14 @@ final class ATAC_Plugin {
 	}
 
 	/**
-	 * Settings → AT Admin Customizer.
+	 * Settings → AT Admin Palette.
 	 */
 	public function register_settings_page() {
 		add_options_page(
-			__( 'AT Admin Customizer', 'at-admin-customizer' ),
-			__( 'AT Admin Customizer', 'at-admin-customizer' ),
+			__( 'AT Admin Palette', 'at-admin-palette' ),
+			__( 'AT Admin Palette', 'at-admin-palette' ),
 			'manage_options',
-			'at-admin-customizer',
+			'at-admin-palette',
 			array( $this, 'render_settings_page' )
 		);
 	}
@@ -59,13 +59,13 @@ final class ATAC_Plugin {
 	 * @return array
 	 */
 	public function plugin_action_links( $links ) {
-		$url = admin_url( 'options-general.php?page=at-admin-customizer' );
+		$url = admin_url( 'options-general.php?page=at-admin-palette' );
 		array_unshift(
 			$links,
 			sprintf(
 				'<a href="%s">%s</a>',
 				esc_url( $url ),
-				esc_html__( 'Settings', 'at-admin-customizer' )
+				esc_html__( 'Settings', 'at-admin-palette' )
 			)
 		);
 		return $links;
@@ -76,28 +76,28 @@ final class ATAC_Plugin {
 	 */
 	public function render_settings_page() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'at-admin-customizer' ) );
+			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'at-admin-palette' ) );
 		}
 
 		$this->widgets->maybe_save_settings();
 		$widget_settings = $this->widgets->get_settings();
 		?>
 		<div class="wrap atac-settings-wrap">
-			<h1><?php echo esc_html__( 'AT Admin Customizer', 'at-admin-customizer' ); ?></h1>
+			<h1><?php echo esc_html__( 'AT Admin Palette', 'at-admin-palette' ); ?></h1>
 
 			<div class="atac-settings-card">
-				<h2><?php echo esc_html__( 'Admin colors', 'at-admin-customizer' ); ?></h2>
-				<p><?php echo esc_html__( 'Pick your own palette right in the admin. Use the color button in the bottom-right corner of any admin screen, or open the panel from here.', 'at-admin-customizer' ); ?></p>
+				<h2><?php echo esc_html__( 'Admin colors', 'at-admin-palette' ); ?></h2>
+				<p><?php echo esc_html__( 'Pick your own palette right in the admin. Use the color button in the bottom-right corner of any admin screen, or open the panel from here.', 'at-admin-palette' ); ?></p>
 				<p>
 					<button type="button" class="button button-primary" id="atac-open-color-panel">
-						<?php echo esc_html__( 'Open color customizer', 'at-admin-customizer' ); ?>
+						<?php echo esc_html__( 'Open color customizer', 'at-admin-palette' ); ?>
 					</button>
 				</p>
 			</div>
 
 			<div class="atac-settings-card">
-				<h2><?php echo esc_html__( 'Dashboard widgets', 'at-admin-customizer' ); ?></h2>
-				<p><?php echo esc_html__( 'Add up to two custom dashboard boxes, choose which roles see them, and optionally hide the default WordPress dashboard widgets.', 'at-admin-customizer' ); ?></p>
+				<h2><?php echo esc_html__( 'Dashboard widgets', 'at-admin-palette' ); ?></h2>
+				<p><?php echo esc_html__( 'Add up to two custom dashboard boxes, choose which roles see them, and optionally hide the default WordPress dashboard widgets.', 'at-admin-palette' ); ?></p>
 				<?php $this->widgets->render_settings_form( $widget_settings ); ?>
 			</div>
 		</div>

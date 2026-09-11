@@ -2,7 +2,7 @@
 /**
  * Admin brand colors: live panel + CSS custom properties.
  *
- * @package AT_Admin_Customizer
+ * @package AT_Admin_Palette
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -51,11 +51,11 @@ final class ATAC_Brand_Colors {
 	public static function presets() {
 		return array(
 			'default' => array(
-				'label'  => __( 'WordPress default', 'at-admin-customizer' ),
+				'label'  => __( 'WordPress default', 'at-admin-palette' ),
 				'colors' => self::defaults(),
 			),
 			'slate'   => array(
-				'label'  => __( 'Slate', 'at-admin-customizer' ),
+				'label'  => __( 'Slate', 'at-admin-palette' ),
 				'colors' => array(
 					'menu_bg'        => '#2c3338',
 					'menu_text'      => '#f0f0f1',
@@ -66,7 +66,7 @@ final class ATAC_Brand_Colors {
 				),
 			),
 			'ocean'   => array(
-				'label'  => __( 'Ocean', 'at-admin-customizer' ),
+				'label'  => __( 'Ocean', 'at-admin-palette' ),
 				'colors' => array(
 					'menu_bg'        => '#0b3d4a',
 					'menu_text'      => '#e8f4f7',
@@ -77,7 +77,7 @@ final class ATAC_Brand_Colors {
 				),
 			),
 			'forest'  => array(
-				'label'  => __( 'Forest', 'at-admin-customizer' ),
+				'label'  => __( 'Forest', 'at-admin-palette' ),
 				'colors' => array(
 					'menu_bg'        => '#1e3323',
 					'menu_text'      => '#eef5ef',
@@ -88,7 +88,7 @@ final class ATAC_Brand_Colors {
 				),
 			),
 			'warm'    => array(
-				'label'  => __( 'Warm', 'at-admin-customizer' ),
+				'label'  => __( 'Warm', 'at-admin-palette' ),
 				'colors' => array(
 					'menu_bg'        => '#3a2a22',
 					'menu_text'      => '#faf3ee',
@@ -108,12 +108,12 @@ final class ATAC_Brand_Colors {
 	 */
 	public static function field_labels() {
 		return array(
-			'menu_bg'        => __( 'Menu background', 'at-admin-customizer' ),
-			'menu_text'      => __( 'Menu text', 'at-admin-customizer' ),
-			'menu_highlight' => __( 'Menu highlight', 'at-admin-customizer' ),
-			'admin_bar'      => __( 'Admin bar', 'at-admin-customizer' ),
-			'primary_button' => __( 'Primary button', 'at-admin-customizer' ),
-			'link'           => __( 'Links', 'at-admin-customizer' ),
+			'menu_bg'        => __( 'Menu background', 'at-admin-palette' ),
+			'menu_text'      => __( 'Menu text', 'at-admin-palette' ),
+			'menu_highlight' => __( 'Menu highlight', 'at-admin-palette' ),
+			'admin_bar'      => __( 'Admin bar', 'at-admin-palette' ),
+			'primary_button' => __( 'Primary button', 'at-admin-palette' ),
+			'link'           => __( 'Links', 'at-admin-palette' ),
 		);
 	}
 
@@ -214,18 +214,18 @@ final class ATAC_Brand_Colors {
 				'presets'  => self::presets(),
 				'labels'   => self::field_labels(),
 				'i18n'     => array(
-					'title'           => __( 'Admin colors', 'at-admin-customizer' ),
-					'subtitle'        => __( 'Choose a starter palette or pick your own. Changes preview live. Save when you like them.', 'at-admin-customizer' ),
-					'starters'        => __( 'Starters', 'at-admin-customizer' ),
-					'yourColors'      => __( 'Your colors', 'at-admin-customizer' ),
-					'save'            => __( 'Save palette', 'at-admin-customizer' ),
-					'reset'           => __( 'Reset to default', 'at-admin-customizer' ),
-					'close'           => __( 'Close', 'at-admin-customizer' ),
-					'saved'           => __( 'Palette saved.', 'at-admin-customizer' ),
-					'resetDone'       => __( 'Reset to WordPress default.', 'at-admin-customizer' ),
-					'error'           => __( 'Could not save. Try again.', 'at-admin-customizer' ),
-					'openAria'        => __( 'Open admin color customizer', 'at-admin-customizer' ),
-					'saving'          => __( 'Saving…', 'at-admin-customizer' ),
+					'title'           => __( 'Admin colors', 'at-admin-palette' ),
+					'subtitle'        => __( 'Choose a starter palette or pick your own. Changes preview live. Save when you like them.', 'at-admin-palette' ),
+					'starters'        => __( 'Starters', 'at-admin-palette' ),
+					'yourColors'      => __( 'Your colors', 'at-admin-palette' ),
+					'save'            => __( 'Save palette', 'at-admin-palette' ),
+					'reset'           => __( 'Reset to default', 'at-admin-palette' ),
+					'close'           => __( 'Close', 'at-admin-palette' ),
+					'saved'           => __( 'Palette saved.', 'at-admin-palette' ),
+					'resetDone'       => __( 'Reset to WordPress default.', 'at-admin-palette' ),
+					'error'           => __( 'Could not save. Try again.', 'at-admin-palette' ),
+					'openAria'        => __( 'Open admin color customizer', 'at-admin-palette' ),
+					'saving'          => __( 'Saving…', 'at-admin-palette' ),
 				),
 			)
 		);

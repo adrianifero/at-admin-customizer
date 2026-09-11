@@ -1,7 +1,7 @@
 name: Deploy to WordPress.org
 
 # Tag name must be the plugin version: 1.1.0 not v1.1.0.
-# Directory slug: at-admin-customizer.
+# Directory slug: at-admin-palette.
 on:
   push:
     tags:
@@ -19,4 +19,4 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: at-admin-customizer
+          SLUG: at-admin-palette
