@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Dashboard widgets module.
  */
-final class CAD_Dashboard_Widgets {
+final class ATAC_Dashboard_Widgets {
 
-	const OPTION_KEY = 'cad_dashboard_widgets';
+	const OPTION_KEY = 'atac_dashboard_widgets';
 
 	/**
 	 * Constructor.
@@ -94,10 +94,10 @@ final class CAD_Dashboard_Widgets {
 	 * Save settings from the settings form.
 	 */
 	public function maybe_save_settings() {
-		if ( empty( $_POST['cad_widgets_nonce'] ) ) {
+		if ( empty( $_POST['atac_widgets_nonce'] ) ) {
 			return;
 		}
-		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['cad_widgets_nonce'] ) ), 'cad_save_widgets' ) ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['atac_widgets_nonce'] ) ), 'atac_save_widgets' ) ) {
 			return;
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -105,12 +105,12 @@ final class CAD_Dashboard_Widgets {
 		}
 
 		$settings = self::defaults();
-		$settings['remove_defaults'] = ! empty( $_POST['cad_remove_defaults'] );
+		$settings['remove_defaults'] = ! empty( $_POST['atac_remove_defaults'] );
 
 		for ( $i = 0; $i < 2; $i++ ) {
-			$title_key   = 'cad_box_' . $i . '_title';
-			$content_key = 'cad_box_' . $i . '_content';
-			$roles_key   = 'cad_box_' . $i . '_roles';
+			$title_key   = 'atac_box_' . $i . '_title';
+			$content_key = 'atac_box_' . $i . '_content';
+			$roles_key   = 'atac_box_' . $i . '_roles';
 
 			$settings['boxes'][ $i ]['title'] = isset( $_POST[ $title_key ] )
 				? sanitize_text_field( wp_unslash( $_POST[ $title_key ] ) )
@@ -129,8 +129,8 @@ final class CAD_Dashboard_Widgets {
 
 		update_option( self::OPTION_KEY, $settings, false );
 		add_settings_error(
-			'cad_dashboard_widgets',
-			'cad_saved',
+			'atac_dashboard_widgets',
+			'atac_saved',
 			__( 'Dashboard widget settings saved.', 'at-admin-customizer' ),
 			'success'
 		);
@@ -142,21 +142,21 @@ final class CAD_Dashboard_Widgets {
 	 * @param array $settings Current settings.
 	 */
 	public function render_settings_form( $settings ) {
-		settings_errors( 'cad_dashboard_widgets' );
+		settings_errors( 'atac_dashboard_widgets' );
 		$roles = wp_roles()->roles;
 		?>
 		<form method="post" action="">
-			<?php wp_nonce_field( 'cad_save_widgets', 'cad_widgets_nonce' ); ?>
+			<?php wp_nonce_field( 'atac_save_widgets', 'atac_widgets_nonce' ); ?>
 
 			<p>
 				<label>
-					<input type="checkbox" name="cad_remove_defaults" value="1" <?php checked( ! empty( $settings['remove_defaults'] ) ); ?> />
+					<input type="checkbox" name="atac_remove_defaults" value="1" <?php checked( ! empty( $settings['remove_defaults'] ) ); ?> />
 					<?php echo esc_html__( 'Hide default WordPress dashboard widgets', 'at-admin-customizer' ); ?>
 				</label>
 			</p>
 
 			<?php foreach ( $settings['boxes'] as $index => $box ) : ?>
-				<fieldset class="cad-box-fieldset">
+				<fieldset class="atac-box-fieldset">
 					<legend>
 						<?php
 						echo esc_html(
@@ -171,7 +171,7 @@ final class CAD_Dashboard_Widgets {
 					<p>
 						<label>
 							<?php echo esc_html__( 'Title', 'at-admin-customizer' ); ?><br />
-							<input type="text" class="regular-text" name="<?php echo esc_attr( 'cad_box_' . $index . '_title' ); ?>" value="<?php echo esc_attr( $box['title'] ); ?>" />
+							<input type="text" class="regular-text" name="<?php echo esc_attr( 'atac_box_' . $index . '_title' ); ?>" value="<?php echo esc_attr( $box['title'] ); ?>" />
 						</label>
 					</p>
 					<p>
@@ -180,22 +180,22 @@ final class CAD_Dashboard_Widgets {
 					<?php
 					wp_editor(
 						$box['content'],
-						'cad_box_' . $index . '_content',
+						'atac_box_' . $index . '_content',
 						array(
-							'textarea_name' => 'cad_box_' . $index . '_content',
+							'textarea_name' => 'atac_box_' . $index . '_content',
 							'textarea_rows' => 8,
 							'media_buttons' => true,
 						)
 					);
 					?>
 					<p><?php echo esc_html__( 'Visible to roles:', 'at-admin-customizer' ); ?></p>
-					<ul class="cad-role-list">
+					<ul class="atac-role-list">
 						<?php foreach ( $roles as $role_key => $role ) : ?>
 							<li>
 								<label>
 									<input
 										type="checkbox"
-										name="<?php echo esc_attr( 'cad_box_' . $index . '_roles[]' ); ?>"
+										name="<?php echo esc_attr( 'atac_box_' . $index . '_roles[]' ); ?>"
 										value="<?php echo esc_attr( $role_key ); ?>"
 										<?php checked( in_array( $role_key, $box['roles'], true ) || in_array( $role['name'], $box['roles'], true ) ); ?>
 									/>
@@ -229,7 +229,7 @@ final class CAD_Dashboard_Widgets {
 				continue;
 			}
 
-			$id = 'cad_custom_box_' . $index;
+			$id = 'atac_custom_box_' . $index;
 			wp_add_dashboard_widget(
 				$id,
 				$box['title'] ? $box['title'] : __( 'Custom box', 'at-admin-customizer' ),

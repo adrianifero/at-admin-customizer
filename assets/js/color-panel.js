@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	var cfg = window.cadColorPanel;
+	var cfg = window.atacColorPanel;
 	if (!cfg) {
 		return;
 	}
@@ -15,10 +15,10 @@
 	}
 
 	function ensureStyleEl() {
-		styleEl = document.getElementById('cad-brand-vars');
+		styleEl = document.getElementById('atac-brand-vars');
 		if (!styleEl) {
 			styleEl = document.createElement('style');
-			styleEl.id = 'cad-brand-vars';
+			styleEl.id = 'atac-brand-vars';
 			document.head.appendChild(styleEl);
 		}
 		return styleEl;
@@ -26,17 +26,17 @@
 
 	function buildCss(colors, apply) {
 		var vars =
-			':root{--cad-menu-bg:' +
+			':root{--atac-menu-bg:' +
 			colors.menu_bg +
-			';--cad-menu-text:' +
+			';--atac-menu-text:' +
 			colors.menu_text +
-			';--cad-menu-highlight:' +
+			';--atac-menu-highlight:' +
 			colors.menu_highlight +
-			';--cad-admin-bar:' +
+			';--atac-admin-bar:' +
 			colors.admin_bar +
-			';--cad-primary:' +
+			';--atac-primary:' +
 			colors.primary_button +
-			';--cad-link:' +
+			';--atac-link:' +
 			colors.link +
 			';}';
 
@@ -46,18 +46,18 @@
 
 		return (
 			vars +
-			'#wpadminbar{background:var(--cad-admin-bar)!important}' +
+			'#wpadminbar{background:var(--atac-admin-bar)!important}' +
 			'#wpadminbar .ab-item,#wpadminbar a.ab-item,#wpadminbar>#wp-toolbar span.ab-label,#wpadminbar>#wp-toolbar span.noticon{color:#fff!important}' +
-			'#adminmenuback,#adminmenuwrap,#adminmenu{background:var(--cad-menu-bg)!important}' +
-			'#adminmenu a{color:var(--cad-menu-text)!important}' +
-			'#adminmenu div.wp-menu-image:before{color:var(--cad-menu-text)!important}' +
-			'#adminmenu li.menu-top:hover,#adminmenu li.opensub>a.menu-top,#adminmenu li>a.menu-top:focus{background:var(--cad-menu-highlight)!important;color:#fff!important}' +
-			'#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,#adminmenu li.current a.menu-top,#adminmenu .wp-menu-arrow,#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head{background:var(--cad-menu-highlight)!important}' +
+			'#adminmenuback,#adminmenuwrap,#adminmenu{background:var(--atac-menu-bg)!important}' +
+			'#adminmenu a{color:var(--atac-menu-text)!important}' +
+			'#adminmenu div.wp-menu-image:before{color:var(--atac-menu-text)!important}' +
+			'#adminmenu li.menu-top:hover,#adminmenu li.opensub>a.menu-top,#adminmenu li>a.menu-top:focus{background:var(--atac-menu-highlight)!important;color:#fff!important}' +
+			'#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,#adminmenu li.current a.menu-top,#adminmenu .wp-menu-arrow,#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head{background:var(--atac-menu-highlight)!important}' +
 			'#adminmenu .wp-submenu{background:#1a1d20!important}' +
-			'body.wp-core-ui .button-primary{background:var(--cad-primary)!important;border-color:var(--cad-primary)!important;color:#fff!important}' +
+			'body.wp-core-ui .button-primary{background:var(--atac-primary)!important;border-color:var(--atac-primary)!important;color:#fff!important}' +
 			'body.wp-core-ui .button-primary:hover,body.wp-core-ui .button-primary:focus{filter:brightness(1.08)}' +
-			'a,body a{color:var(--cad-link)}' +
-			'#adminmenu .awaiting-mod,#adminmenu .update-plugins{background:var(--cad-primary)!important}'
+			'a,body a{color:var(--atac-link)}' +
+			'#adminmenu .awaiting-mod,#adminmenu .update-plugins{background:var(--atac-primary)!important}'
 		);
 	}
 
@@ -81,7 +81,7 @@
 	}
 
 	function updateFab(colors) {
-		var fab = $('#cad-color-fab');
+		var fab = $('#atac-color-fab');
 		if (!fab) {
 			return;
 		}
@@ -90,8 +90,8 @@
 
 	function syncInputs(colors) {
 		Object.keys(cfg.labels).forEach(function (key) {
-			var colorInput = document.getElementById('cad-color-' + key);
-			var textInput = document.getElementById('cad-hex-' + key);
+			var colorInput = document.getElementById('atac-color-' + key);
+			var textInput = document.getElementById('atac-hex-' + key);
 			if (colorInput) {
 				colorInput.value = normalizeHex(colors[key]);
 			}
@@ -124,7 +124,7 @@
 	}
 
 	function markActivePreset(colors) {
-		var buttons = document.querySelectorAll('.cad-preset');
+		var buttons = document.querySelectorAll('.atac-preset');
 		buttons.forEach(function (btn) {
 			var id = btn.getAttribute('data-preset');
 			var preset = cfg.presets[id];
@@ -134,7 +134,7 @@
 	}
 
 	function setStatus(message, isError) {
-		var el = $('.cad-panel-status');
+		var el = $('.atac-panel-status');
 		if (!el) {
 			return;
 		}
@@ -143,7 +143,7 @@
 	}
 
 	function buildPanel() {
-		var root = document.getElementById('cad-color-root');
+		var root = document.getElementById('atac-color-root');
 		if (!root || root.dataset.ready) {
 			return;
 		}
@@ -152,14 +152,14 @@
 
 		var fab = document.createElement('button');
 		fab.type = 'button';
-		fab.id = 'cad-color-fab';
+		fab.id = 'atac-color-fab';
 		fab.setAttribute('aria-label', cfg.i18n.openAria);
 		fab.innerHTML =
 			'<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 3a9 9 0 0 0 0 18c.7 0 1.2-.5 1.2-1.2 0-.3-.1-.6-.3-.8-.2-.2-.3-.5-.3-.8 0-.7.5-1.2 1.2-1.2H16a5 5 0 0 0 0-10h-.5A9 9 0 0 0 12 3zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>';
 		fab.addEventListener('click', togglePanel);
 
 		var panel = document.createElement('div');
-		panel.id = 'cad-color-panel';
+		panel.id = 'atac-color-panel';
 		panel.hidden = true;
 		panel.setAttribute('role', 'dialog');
 		panel.setAttribute('aria-modal', 'false');
@@ -174,13 +174,13 @@
 					})
 					.join('');
 				return (
-					'<button type="button" class="cad-preset" data-preset="' +
+					'<button type="button" class="atac-preset" data-preset="' +
 					id +
 					'">' +
-					'<span class="cad-preset-label">' +
+					'<span class="atac-preset-label">' +
 					escapeHtml(p.label) +
 					'</span>' +
-					'<span class="cad-preset-swatches">' +
+					'<span class="atac-preset-swatches">' +
 					swatches +
 					'</span>' +
 					'</button>'
@@ -191,21 +191,21 @@
 		var fieldsHtml = Object.keys(cfg.labels)
 			.map(function (key) {
 				return (
-					'<div class="cad-field">' +
-					'<label for="cad-color-' +
+					'<div class="atac-field">' +
+					'<label for="atac-color-' +
 					key +
 					'">' +
 					escapeHtml(cfg.labels[key]) +
 					'</label>' +
-					'<div class="cad-field-controls">' +
-					'<input type="color" id="cad-color-' +
+					'<div class="atac-field-controls">' +
+					'<input type="color" id="atac-color-' +
 					key +
 					'" data-key="' +
 					key +
 					'" value="' +
 					normalizeHex(state[key]) +
 					'" />' +
-					'<input type="text" id="cad-hex-' +
+					'<input type="text" id="atac-hex-' +
 					key +
 					'" data-key="' +
 					key +
@@ -218,46 +218,46 @@
 			.join('');
 
 		panel.innerHTML =
-			'<div class="cad-panel-header">' +
+			'<div class="atac-panel-header">' +
 			'<div><h2>' +
 			escapeHtml(cfg.i18n.title) +
 			'</h2><p>' +
 			escapeHtml(cfg.i18n.subtitle) +
 			'</p></div>' +
-			'<button type="button" class="cad-panel-close" aria-label="' +
+			'<button type="button" class="atac-panel-close" aria-label="' +
 			escapeHtml(cfg.i18n.close) +
 			'">×</button>' +
 			'</div>' +
-			'<div class="cad-panel-body">' +
-			'<div class="cad-panel-section-title">' +
+			'<div class="atac-panel-body">' +
+			'<div class="atac-panel-section-title">' +
 			escapeHtml(cfg.i18n.starters) +
 			'</div>' +
-			'<div class="cad-presets">' +
+			'<div class="atac-presets">' +
 			presetHtml +
 			'</div>' +
-			'<div class="cad-panel-section-title">' +
+			'<div class="atac-panel-section-title">' +
 			escapeHtml(cfg.i18n.yourColors) +
 			'</div>' +
-			'<div class="cad-fields">' +
+			'<div class="atac-fields">' +
 			fieldsHtml +
 			'</div>' +
-			'<div class="cad-panel-actions">' +
-			'<button type="button" class="button button-primary" id="cad-save-colors">' +
+			'<div class="atac-panel-actions">' +
+			'<button type="button" class="button button-primary" id="atac-save-colors">' +
 			escapeHtml(cfg.i18n.save) +
 			'</button>' +
-			'<button type="button" class="button" id="cad-reset-colors">' +
+			'<button type="button" class="button" id="atac-reset-colors">' +
 			escapeHtml(cfg.i18n.reset) +
 			'</button>' +
 			'</div>' +
-			'<div class="cad-panel-status" aria-live="polite"></div>' +
+			'<div class="atac-panel-status" aria-live="polite"></div>' +
 			'</div>';
 
 		root.appendChild(fab);
 		root.appendChild(panel);
 
-		panel.querySelector('.cad-panel-close').addEventListener('click', closePanel);
+		panel.querySelector('.atac-panel-close').addEventListener('click', closePanel);
 
-		panel.querySelectorAll('.cad-preset').forEach(function (btn) {
+		panel.querySelectorAll('.atac-preset').forEach(function (btn) {
 			btn.addEventListener('click', function () {
 				var id = btn.getAttribute('data-preset');
 				state = Object.assign({}, cfg.presets[id].colors);
@@ -285,8 +285,8 @@
 			});
 		});
 
-		$('#cad-save-colors').addEventListener('click', saveColors);
-		$('#cad-reset-colors').addEventListener('click', resetColors);
+		$('#atac-save-colors').addEventListener('click', saveColors);
+		$('#atac-reset-colors').addEventListener('click', resetColors);
 
 		document.addEventListener('keydown', function (event) {
 			if (event.key === 'Escape' && panelOpen) {
@@ -294,7 +294,7 @@
 			}
 		});
 
-		var settingsBtn = document.getElementById('cad-open-color-panel');
+		var settingsBtn = document.getElementById('atac-open-color-panel');
 		if (settingsBtn) {
 			settingsBtn.addEventListener('click', openPanel);
 		}
@@ -311,7 +311,7 @@
 	}
 
 	function openPanel() {
-		var panel = $('#cad-color-panel');
+		var panel = $('#atac-color-panel');
 		if (!panel) {
 			return;
 		}
@@ -321,7 +321,7 @@
 	}
 
 	function closePanel() {
-		var panel = $('#cad-color-panel');
+		var panel = $('#atac-color-panel');
 		if (!panel) {
 			return;
 		}
@@ -356,10 +356,10 @@
 	}
 
 	function saveColors() {
-		var btn = $('#cad-save-colors');
+		var btn = $('#atac-save-colors');
 		btn.disabled = true;
 		btn.textContent = cfg.i18n.saving;
-		post('cad_save_brand_colors', { colors: JSON.stringify(state) })
+		post('atac_save_brand_colors', { colors: JSON.stringify(state) })
 			.then(function (json) {
 				if (!json || !json.success) {
 					throw new Error('save failed');
@@ -380,7 +380,7 @@
 	}
 
 	function resetColors() {
-		post('cad_reset_brand_colors')
+		post('atac_reset_brand_colors')
 			.then(function (json) {
 				if (!json || !json.success) {
 					throw new Error('reset failed');

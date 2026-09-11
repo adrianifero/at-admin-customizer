@@ -12,19 +12,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Brand / palette module.
  */
-final class CAD_Brand_Colors {
+final class ATAC_Brand_Colors {
 
-	const OPTION_KEY = 'cad_brand_colors';
+	const OPTION_KEY = 'atac_brand_colors';
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'admin_head', array( $this, 'print_live_css' ), 99 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_live_css' ), 20 );
 		add_action( 'admin_footer', array( $this, 'render_panel_markup' ) );
-		add_action( 'wp_ajax_cad_save_brand_colors', array( $this, 'ajax_save' ) );
-		add_action( 'wp_ajax_cad_reset_brand_colors', array( $this, 'ajax_reset' ) );
+		add_action( 'wp_ajax_atac_save_brand_colors', array( $this, 'ajax_save' ) );
+		add_action( 'wp_ajax_atac_reset_brand_colors', array( $this, 'ajax_reset' ) );
 	}
 
 	/**
@@ -123,7 +123,17 @@ final class CAD_Brand_Colors {
 	 * @return array<string,string>
 	 */
 	public function get_colors() {
-		$saved = get_option( self::OPTION_KEY, array() );
+		$saved = get_option( self::OPTION_KEY, null );
+		if ( null === $saved ) {
+			$legacy = get_option( 'cad_brand_colors', null );
+			if ( is_array( $legacy ) ) {
+				update_option( self::OPTION_KEY, $legacy, false );
+				delete_option( 'cad_brand_colors' );
+				$saved = $legacy;
+			} else {
+				$saved = array();
+			}
+		}
 		if ( ! is_array( $saved ) ) {
 			$saved = array();
 		}
@@ -172,33 +182,33 @@ final class CAD_Brand_Colors {
 		}
 
 		wp_enqueue_style(
-			'cad-color-panel',
-			CAD_PLUGIN_URL . 'assets/css/color-panel.css',
+			'atac-color-panel',
+			ATAC_PLUGIN_URL . 'assets/css/color-panel.css',
 			array(),
-			CAD_VERSION
+			ATAC_VERSION
 		);
 
 		wp_enqueue_style(
-			'cad-settings',
-			CAD_PLUGIN_URL . 'assets/css/settings.css',
+			'atac-settings',
+			ATAC_PLUGIN_URL . 'assets/css/settings.css',
 			array(),
-			CAD_VERSION
+			ATAC_VERSION
 		);
 
 		wp_enqueue_script(
-			'cad-color-panel',
-			CAD_PLUGIN_URL . 'assets/js/color-panel.js',
+			'atac-color-panel',
+			ATAC_PLUGIN_URL . 'assets/js/color-panel.js',
 			array(),
-			CAD_VERSION,
+			ATAC_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'cad-color-panel',
-			'cadColorPanel',
+			'atac-color-panel',
+			'atacColorPanel',
 			array(
 				'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
-				'nonce'    => wp_create_nonce( 'cad_brand_colors' ),
+				'nonce'    => wp_create_nonce( 'atac_brand_colors' ),
 				'colors'   => $this->get_colors(),
 				'defaults' => self::defaults(),
 				'presets'  => self::presets(),
@@ -222,21 +232,20 @@ final class CAD_Brand_Colors {
 	}
 
 	/**
-	 * Print applied CSS variables + rules when customized.
+	 * Enqueue applied CSS variables + rules via wp_add_inline_style.
 	 */
-	public function print_live_css() {
+	public function enqueue_live_css() {
 		if ( ! is_admin() ) {
 			return;
 		}
 
 		$colors = $this->get_colors();
-		if ( self::defaults() === $colors ) {
-			// Still print vars so the live preview panel can override them.
-			echo '<style id="cad-brand-vars">' . $this->build_css( $colors, false ) . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			return;
-		}
+		$apply  = self::defaults() !== $colors;
+		$css    = $this->build_css( $colors, $apply );
 
-		echo '<style id="cad-brand-vars">' . $this->build_css( $colors, true ) . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		wp_register_style( 'atac-brand-vars', false, array(), ATAC_VERSION );
+		wp_enqueue_style( 'atac-brand-vars' );
+		wp_add_inline_style( 'atac-brand-vars', $css );
 	}
 
 	/**
@@ -248,7 +257,7 @@ final class CAD_Brand_Colors {
 	 */
 	public function build_css( $colors, $apply = true ) {
 		$vars = sprintf(
-			':root{--cad-menu-bg:%1$s;--cad-menu-text:%2$s;--cad-menu-highlight:%3$s;--cad-admin-bar:%4$s;--cad-primary:%5$s;--cad-link:%6$s;}',
+			':root{--atac-menu-bg:%1$s;--atac-menu-text:%2$s;--atac-menu-highlight:%3$s;--atac-admin-bar:%4$s;--atac-primary:%5$s;--atac-link:%6$s;}',
 			$colors['menu_bg'],
 			$colors['menu_text'],
 			$colors['menu_highlight'],
@@ -262,18 +271,18 @@ final class CAD_Brand_Colors {
 		}
 
 		$rules = <<<'CSS'
-#wpadminbar{background:var(--cad-admin-bar)!important}
+#wpadminbar{background:var(--atac-admin-bar)!important}
 #wpadminbar .ab-item,#wpadminbar a.ab-item,#wpadminbar>#wp-toolbar span.ab-label,#wpadminbar>#wp-toolbar span.noticon{color:#fff!important}
-#adminmenuback,#adminmenuwrap,#adminmenu{background:var(--cad-menu-bg)!important}
-#adminmenu a{color:var(--cad-menu-text)!important}
-#adminmenu div.wp-menu-image:before{color:var(--cad-menu-text)!important}
-#adminmenu li.menu-top:hover,#adminmenu li.opensub>a.menu-top,#adminmenu li>a.menu-top:focus{background:var(--cad-menu-highlight)!important;color:#fff!important}
-#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,#adminmenu li.current a.menu-top,#adminmenu .wp-menu-arrow,#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head{background:var(--cad-menu-highlight)!important}
+#adminmenuback,#adminmenuwrap,#adminmenu{background:var(--atac-menu-bg)!important}
+#adminmenu a{color:var(--atac-menu-text)!important}
+#adminmenu div.wp-menu-image:before{color:var(--atac-menu-text)!important}
+#adminmenu li.menu-top:hover,#adminmenu li.opensub>a.menu-top,#adminmenu li>a.menu-top:focus{background:var(--atac-menu-highlight)!important;color:#fff!important}
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,#adminmenu li.current a.menu-top,#adminmenu .wp-menu-arrow,#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head{background:var(--atac-menu-highlight)!important}
 #adminmenu .wp-submenu{background:#1a1d20!important}
-body.wp-core-ui .button-primary{background:var(--cad-primary)!important;border-color:var(--cad-primary)!important;color:#fff!important}
+body.wp-core-ui .button-primary{background:var(--atac-primary)!important;border-color:var(--atac-primary)!important;color:#fff!important}
 body.wp-core-ui .button-primary:hover,body.wp-core-ui .button-primary:focus{filter:brightness(1.08)}
-a,body a{color:var(--cad-link)}
-#adminmenu .awaiting-mod,#adminmenu .update-plugins{background:var(--cad-primary)!important}
+a,body a{color:var(--atac-link)}
+#adminmenu .awaiting-mod,#adminmenu .update-plugins{background:var(--atac-primary)!important}
 CSS;
 
 		return $vars . $rules;
@@ -286,14 +295,14 @@ CSS;
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		echo '<div id="cad-color-root" hidden></div>';
+		echo '<div id="atac-color-root" hidden></div>';
 	}
 
 	/**
 	 * AJAX: save palette.
 	 */
 	public function ajax_save() {
-		check_ajax_referer( 'cad_brand_colors', 'nonce' );
+		check_ajax_referer( 'atac_brand_colors', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( array( 'message' => 'forbidden' ), 403 );
@@ -328,7 +337,7 @@ CSS;
 	 * AJAX: reset to defaults.
 	 */
 	public function ajax_reset() {
-		check_ajax_referer( 'cad_brand_colors', 'nonce' );
+		check_ajax_referer( 'atac_brand_colors', 'nonce' );
 
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( array( 'message' => 'forbidden' ), 403 );

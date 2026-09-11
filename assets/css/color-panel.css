@@ -1,6 +1,6 @@
 /* Color customizer floating panel - AT Admin Customizer */
 
-#cad-color-fab {
+#atac-color-fab {
 	position: fixed;
 	right: 24px;
 	bottom: 24px;
@@ -17,21 +17,21 @@
 	transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-#cad-color-fab:hover,
-#cad-color-fab:focus {
+#atac-color-fab:hover,
+#atac-color-fab:focus {
 	transform: scale(1.06);
 	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
 	outline: 2px solid #fff;
 	outline-offset: 2px;
 }
 
-#cad-color-fab svg {
+#atac-color-fab svg {
 	width: 22px;
 	height: 22px;
 	display: block;
 }
 
-#cad-color-panel {
+#atac-color-panel {
 	position: fixed;
 	right: 24px;
 	bottom: 88px;
@@ -47,12 +47,12 @@
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-#cad-color-panel[hidden],
-#cad-color-fab[hidden] {
+#atac-color-panel[hidden],
+#atac-color-fab[hidden] {
 	display: none !important;
 }
 
-.cad-panel-header {
+.atac-panel-header {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
@@ -65,20 +65,20 @@
 	z-index: 1;
 }
 
-.cad-panel-header h2 {
+.atac-panel-header h2 {
 	margin: 0 0 4px;
 	font-size: 16px;
 	line-height: 1.3;
 }
 
-.cad-panel-header p {
+.atac-panel-header p {
 	margin: 0;
 	font-size: 12px;
 	line-height: 1.45;
 	color: #646970;
 }
 
-.cad-panel-close {
+.atac-panel-close {
 	border: 0;
 	background: transparent;
 	font-size: 20px;
@@ -88,11 +88,11 @@
 	padding: 0 4px;
 }
 
-.cad-panel-body {
+.atac-panel-body {
 	padding: 12px 16px 16px;
 }
 
-.cad-panel-section-title {
+.atac-panel-section-title {
 	margin: 8px 0 8px;
 	font-size: 11px;
 	font-weight: 600;
@@ -101,14 +101,14 @@
 	color: #646970;
 }
 
-.cad-presets {
+.atac-presets {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 8px;
 	margin-bottom: 14px;
 }
 
-.cad-preset {
+.atac-preset {
 	border: 1px solid #dcdcde;
 	background: #f6f7f7;
 	border-radius: 8px;
@@ -118,56 +118,56 @@
 	transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.cad-preset:hover,
-.cad-preset:focus,
-.cad-preset.is-active {
+.atac-preset:hover,
+.atac-preset:focus,
+.atac-preset.is-active {
 	border-color: #2271b1;
 	background: #f0f6fc;
 }
 
-.cad-preset-label {
+.atac-preset-label {
 	display: block;
 	font-size: 12px;
 	font-weight: 600;
 	margin-bottom: 6px;
 }
 
-.cad-preset-swatches {
+.atac-preset-swatches {
 	display: flex;
 	gap: 4px;
 }
 
-.cad-preset-swatches span {
+.atac-preset-swatches span {
 	width: 14px;
 	height: 14px;
 	border-radius: 50%;
 	border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.cad-fields {
+.atac-fields {
 	display: grid;
 	gap: 10px;
 	margin-bottom: 14px;
 }
 
-.cad-field {
+.atac-field {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	align-items: center;
 	gap: 8px;
 }
 
-.cad-field label {
+.atac-field label {
 	font-size: 13px;
 }
 
-.cad-field-controls {
+.atac-field-controls {
 	display: flex;
 	align-items: center;
 	gap: 6px;
 }
 
-.cad-field input[type="color"] {
+.atac-field input[type="color"] {
 	width: 36px;
 	height: 32px;
 	padding: 0;
@@ -177,37 +177,37 @@
 	cursor: pointer;
 }
 
-.cad-field input[type="text"] {
+.atac-field input[type="text"] {
 	width: 88px;
 	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 	font-size: 12px;
 }
 
-.cad-panel-actions {
+.atac-panel-actions {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
 	align-items: center;
 }
 
-.cad-panel-status {
+.atac-panel-status {
 	min-height: 18px;
 	margin-top: 10px;
 	font-size: 12px;
 	color: #1e7e34;
 }
 
-.cad-panel-status.is-error {
+.atac-panel-status.is-error {
 	color: #b32d2e;
 }
 
 @media (max-width: 782px) {
-	#cad-color-fab {
+	#atac-color-fab {
 		right: 16px;
 		bottom: 16px;
 	}
 
-	#cad-color-panel {
+	#atac-color-panel {
 		right: 12px;
 		left: 12px;
 		width: auto;

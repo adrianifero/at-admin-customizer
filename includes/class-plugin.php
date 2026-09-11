@@ -12,19 +12,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main plugin class.
  */
-final class CAD_Plugin {
+final class ATAC_Plugin {
 
 	/**
 	 * Brand colors module.
 	 *
-	 * @var CAD_Brand_Colors
+	 * @var ATAC_Brand_Colors
 	 */
 	public $brand;
 
 	/**
 	 * Dashboard widgets module.
 	 *
-	 * @var CAD_Dashboard_Widgets
+	 * @var ATAC_Dashboard_Widgets
 	 */
 	public $widgets;
 
@@ -32,11 +32,11 @@ final class CAD_Plugin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->brand   = new CAD_Brand_Colors();
-		$this->widgets = new CAD_Dashboard_Widgets();
+		$this->brand   = new ATAC_Brand_Colors();
+		$this->widgets = new ATAC_Dashboard_Widgets();
 
 		add_action( 'admin_menu', array( $this, 'register_settings_page' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( CAD_PLUGIN_FILE ), array( $this, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( ATAC_PLUGIN_FILE ), array( $this, 'plugin_action_links' ) );
 	}
 
 	/**
@@ -82,20 +82,20 @@ final class CAD_Plugin {
 		$this->widgets->maybe_save_settings();
 		$widget_settings = $this->widgets->get_settings();
 		?>
-		<div class="wrap cad-settings-wrap">
+		<div class="wrap atac-settings-wrap">
 			<h1><?php echo esc_html__( 'AT Admin Customizer', 'at-admin-customizer' ); ?></h1>
 
-			<div class="cad-settings-card">
+			<div class="atac-settings-card">
 				<h2><?php echo esc_html__( 'Admin colors', 'at-admin-customizer' ); ?></h2>
 				<p><?php echo esc_html__( 'Pick your own palette right in the admin. Use the color button in the bottom-right corner of any admin screen, or open the panel from here.', 'at-admin-customizer' ); ?></p>
 				<p>
-					<button type="button" class="button button-primary" id="cad-open-color-panel">
+					<button type="button" class="button button-primary" id="atac-open-color-panel">
 						<?php echo esc_html__( 'Open color customizer', 'at-admin-customizer' ); ?>
 					</button>
 				</p>
 			</div>
 
-			<div class="cad-settings-card">
+			<div class="atac-settings-card">
 				<h2><?php echo esc_html__( 'Dashboard widgets', 'at-admin-customizer' ); ?></h2>
 				<p><?php echo esc_html__( 'Add up to two custom dashboard boxes, choose which roles see them, and optionally hide the default WordPress dashboard widgets.', 'at-admin-customizer' ); ?></p>
 				<?php $this->widgets->render_settings_form( $widget_settings ); ?>

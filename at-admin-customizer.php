@@ -10,7 +10,6 @@
  * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP: 7.4
- * Tested up to: 7.1
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -19,26 +18,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CAD_VERSION', '1.1.0' );
-define( 'CAD_PLUGIN_FILE', __FILE__ );
-define( 'CAD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'CAD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'ATAC_VERSION', '1.1.0' );
+define( 'ATAC_PLUGIN_FILE', __FILE__ );
+define( 'ATAC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'ATAC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-require_once CAD_PLUGIN_DIR . 'includes/class-brand-colors.php';
-require_once CAD_PLUGIN_DIR . 'includes/class-dashboard-widgets.php';
-require_once CAD_PLUGIN_DIR . 'includes/class-plugin.php';
+require_once ATAC_PLUGIN_DIR . 'includes/class-brand-colors.php';
+require_once ATAC_PLUGIN_DIR . 'includes/class-dashboard-widgets.php';
+require_once ATAC_PLUGIN_DIR . 'includes/class-plugin.php';
 
 /**
  * Bootstrap.
  *
- * @return CAD_Plugin
+ * @return ATAC_Plugin
  */
-function cad_plugin() {
+function atac_plugin() {
 	static $instance = null;
 	if ( null === $instance ) {
-		$instance = new CAD_Plugin();
+		$instance = new ATAC_Plugin();
 	}
 	return $instance;
 }
 
-cad_plugin();
+atac_plugin();

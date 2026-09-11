@@ -1,4 +1,4 @@
-.cad-settings-wrap .cad-settings-card {
+.atac-settings-wrap .atac-settings-card {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 8px;
@@ -7,14 +7,14 @@
 	max-width: 860px;
 }
 
-.cad-settings-wrap .cad-box-fieldset {
+.atac-settings-wrap .atac-box-fieldset {
 	border: 1px solid #dcdcde;
 	border-radius: 6px;
 	padding: 12px 16px 16px;
 	margin: 16px 0;
 }
 
-.cad-settings-wrap .cad-role-list {
+.atac-settings-wrap .atac-role-list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px 16px;
