@@ -34,7 +34,7 @@ if ! unzip -p "$OUT" "${SLUG}/assets/js/color-panel.js" | grep -q 'cadColorPanel
 	exit 1
 fi
 
-if ! unzip -p "$OUT" "${SLUG}/includes/class-brand-colors.php" | grep -q 'cad_brand_colors'; then
+if ! unzip -p "$OUT" "${SLUG}/includes/class-brand-colors.php" | grep -q 'atac_brand_colors'; then
 	echo "ERROR: zip PHP missing brand colors module" >&2
 	exit 1
 fi
